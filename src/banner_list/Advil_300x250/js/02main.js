@@ -109,12 +109,12 @@ App_banner.fn.step1 = function() {
 
   // Variables
   var tl          = new TimelineMax(),
-      placeholder = $('.animation-placeholder'),
-      scrollBar,
-      isi1        = $('#isi'),
-      isiMain     = $('#isi-main'),
-      mainExit    = $('#mainExit'),
-      myScroll;
+      frame1      = $("#frame1"),
+      frame3        = $("#frame3"),
+      frame4        = $("#frame4"),
+      otc_text      = $("#otc"),
+      frame7        = $("#frame7"),
+      frame8        = $("#frame8");
 
 
   //Assign timeline to window to be able to test.
@@ -123,44 +123,43 @@ App_banner.fn.step1 = function() {
   //
   //Timeline Animation
   //
+  
+    // Frame 1-2
+  tl.addLabel('frame1')
+    .fromTo(frame1, 1, {x: -500}, {x: 400}, 'frame1')
+    // Frame 3
+    .addLabel('frame3')
+    .from(frame3, 1.5, {autoAlpha: 0}, 'frame3')
+    .to(frame3, 1, {autoAlpha: 0})
+    // Frame 4-6
+    .addLabel('frame4')
+    .to(otc_text, 0.6, {autoAlpha: 1}, 'frame4')
+    .from(frame4, 1, {x:500}, 'frame4')
+    .to([frame4, otc_text], 1, {autoAlpha: 0, delay: 2.5})
+    // Frame 7
+    .addLabel('frame7')
+    .from(frame7, 1.5, {autoAlpha:0}, 'frame7')
+    .to(frame7, 1, {autoAlpha: 0, delay: 1})
+    // Frame 8
+    .addLabel('frame8')
+    .from(frame8, 1, {autoAlpha: 0}, 'frame8')
 
-  tl.addLabel('frame1', '+=0.5')
-    .from(placeholder, 0.6, {x: 500}, 'frame1')
-  //
-  // SCROLL
-  //
-
-  //Scroll init function. Keep disable options as they
-  function initScrollBars(){
-    myScroll = new IScroll('#isi_wrapper', {
-          scrollbars: 'custom',
-          interactiveScrollbars: true,
-          mouseWheel: true,
-          momentum: true,
-          disablePointer:true,
-          disableTouch:false,
-          disableMouse:true
-      });
-      window.myScroll = myScroll;
-      scrollBar = $('.iScrollVerticalScrollbar');
-  }
-
-  // scroll init
-  initScrollBars();
-
+    // console.log(tl.duration());
+    
   // Exits Listeners
-  mainExit.on('click', App_banner.fn.mainExitHandler);
-  $('.pi').on('click', App_banner.fn.piExitHandler);
+  $('#main-panel').on('click', App_banner.fn.mainExitHandler);
+  $('#more-facts').on('click', App_banner.fn.moreFactsExitHandler);
 
 };
 
 //Main Exit Handler
 App_banner.fn.mainExitHandler = function(e) {
   e.preventDefault();
-  Enabler.exit('Main Exit','http://google.com');
+  Enabler.exit('Main Exit','https://www.advil.com/advil');
 }
-// Pi Exit handler
-App_banner.fn.piExitHandler = function(e) {
+// More Facts Exit handler
+App_banner.fn.moreFactsExitHandler = function(e) {
   e.preventDefault();
-  Enabler.exit('Prescribing Information and Medication Guide','http://google.com');
+  e.stopPropagation();
+  Enabler.exit('More facts','https://www.advilaide.com/drug-facts');
 }

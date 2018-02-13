@@ -1,0 +1,49 @@
+extends ../../../pug/layout
+block title
+	title Advil Banner
+block metaSize
+	meta(name="ad.size", content='width=300,height=50')
+
+block content
+	#step-1.wrapper.white-state.centered-layout.step(data-order=1)
+		#main-panel
+				#frame1.absolute-position
+					img(src="images/advil-frame2.png")
+					img(id="img1" src="images/advil-frame1.png")
+				#frame3.absolute-position
+					img(src="images/advil-frame3-missed.png" alt="In case you missed it")
+					.dots
+						include ../img/advil-dot.svg
+						include ../img/advil-dot.svg
+				#frame4.absolute-position
+					img(id="frame4-fact" src="images/advil-frame4-fact.png" alt="Fact")
+					.dots
+						include ../img/advil-dot.svg
+						include ../img/advil-dot.svg
+					#message
+						img(src="images/advil-frame4-main-message.png" alt="Nothing is proven to work faster, stronger, or longer than Advil®*")
+				#otc
+					img(src="images/advil-otc.png" alt="*Among OTC analgesics.")
+				#frame7.absolute-position
+					img(id="fast" src="images/advil-working-fast.png" alt="We’re just used to working fast")
+					img(id="pack" src="images/advil-pack.png")
+				#frame8.absolute-position
+					img(id="frame8-fact" src="images/advil-frame8-fact.png")
+					.dots
+						include ../img/advil-dot.svg
+						include ../img/advil-dot.svg
+					#message
+						img(src="images/advil-frame8-main-message.png" alt="Nothing is proven to work faster, stronger, or longer than Advil®*")
+						img(src="images/advil-frame8-sub-message.png" alt="Recommend the #1-selling OTC pain reliever today")
+					img(id="frame8-pack" src="images/advil-pack.png")
+					a#more-facts
+						img(id="arrow" src="images/advil-frame8-arrow.png")
+						img(src="images/advil-frame8-link.png")
+					img(id="pfizer-logo" src="images/advil-frame8-pfizer-logo.png" alt="Pfizer logo")
+					#otc-date
+						img(src="images/advil-otc.png")
+						img(src="images/advil-frame8-date.png")
+					
+
+
+
